@@ -3,340 +3,328 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Museum Guide</title>
+    <title>Museum Guide India</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
     <style>
-      body {
-        font-family: 'Arial', sans-serif;
-        background-color: #E2F1AF;
-        margin: 0;
-        padding: 20px;
-      }
-      .container {
-        width: 80%;
-        max-width: 800px;
-        min-height: 80vh;
-        background-color: #E3D888;
-        margin: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        overflow-y: auto;
-      }
-      .bot, .user {
-        padding: 15px;
-        margin: 10px 0;
-        border-radius: 8px;
-        color: #84714F;
-        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-        max-width: 100%;
-        word-wrap: break-word;
-      }
-      .bot {
-        background-color: #5A3A31;
-        text-align: right;
-      }
-      .user {
-        background-color: #5A3A31;
-        text-align: left;
-      }
-      button {
-        background-color: #31231E;
-        color: #ffffff;
-        border: none;
-        border-radius: 5px;
-        width: 100%;
-        margin: 20px 0;
-        padding: 15px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s;
-      }
-      button:hover {
-        background-color: #ba542f;
-      }
-      .message {
-        color: #333;
-        background-color: #e9ecef;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: center;
-        margin: 10px 0;
-      }
-      .div-css {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 8px;
-      }
-      .ticket-css {
-        width: 100%;
-        max-width: 400px;
-        border: 2px solid #4caf50;
-        border-radius: 10px;
-        background: #fff;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        position: relative;
-        padding: 20px;
-        overflow: hidden;
-      }
-      .ticket-header-css {
-        text-align: center;
-        font-size: 22px;
-        font-weight: bold;
-        color: #4caf50;
-        margin-bottom: 10px;
-      }
-      .ticket-body-css {
-        margin: 20px 0;
-        font-size: 16px;
-        color: #333;
-      }
-      .ticket-footer-css {
-        text-align: center;
-        font-size: 14px;
-        color: #555;
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        right: 0;
-      }
-      .butt {
-        padding: 10px 20px;
-        border: none;
-        background-color: #4caf50;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-      }
-      .butt:hover {
-        background-color: #45a049;
-      }
+        :root {
+            --bg-color: #F8F4E3; /* Parchment background */
+            --container-bg: #FFFFFF; /* White container */
+            --primary-text: #2c2c2c; /* Dark charcoal */
+            --secondary-text: #FFFFFF;
+            --bot-bubble-bg: #D1E7DD; /* Soft green */
+            --user-bubble-bg: #C1D8E8; /* Soft blue */
+            --accent-color: #6A0DAD;  /* Regal purple for buttons */
+            --accent-hover: #4C007D;
+            --font-heading: 'Merriweather', serif;
+            --font-body: 'Lato', sans-serif;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--primary-text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .chat-container {
+            width: 90%;
+            max-width: 700px;
+            height: 85vh;
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .message-area {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .message {
+            padding: 12px 18px;
+            border-radius: 18px;
+            max-width: 75%;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+        .bot {
+            background-color: var(--bot-bubble-bg);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .user {
+            background-color: var(--user-bubble-bg);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .options-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px 20px;
+            align-self: center;
+        }
+        .option-button {
+            background-color: var(--accent-color);
+            color: var(--secondary-text);
+            border: none;
+            border-radius: 20px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 15px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .option-button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+        .ticket-wrapper {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .ticket {
+            background: #fff;
+            border: 2px dashed var(--accent-color);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .ticket-header {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .ticket-body p {
+            margin: 8px 0;
+            font-size: 14px;
+            text-align: left;
+        }
+        .ticket-body strong {
+            color: var(--primary-text);
+        }
     </style>
 </head>
 <body>
-    <div class="container"></div>
+    <div class="chat-container">
+        <div class="message-area" id="message-area"></div>
+        <div class="options-container" id="options-container"></div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    
+
     <script>
-      const container = document.querySelector(".container");
-      let chatState = 0; 
-      let numAdults = 0;
-      let numChildren = 0;
-      let numChildrenBelow5 = 0;
-      let museumName="";
+        // --- DOM Elements ---
+        const messageArea = document.getElementById("message-area");
+        const optionsContainer = document.getElementById("options-container");
 
-      function StartChat() {
-        DisplayBotMessage("Welcome to the museum guide! Choose a city to explore museums:");
-        displayOptions(["Delhi", "Mumbai", "Kolkata", "Chennai"]);
-      }
-
-      function DisplayBotMessage(message) {
-        const BotMessageElement = document.createElement("div");
-        BotMessageElement.classList.add("message", "bot");
-        BotMessageElement.textContent = message;
-        container.appendChild(BotMessageElement);
-        container.scrollTop = container.scrollHeight;
-      }
-
-      function displayOptions(options) {
-        options.forEach((option) => {
-          const OptionElement = document.createElement("button");
-          OptionElement.classList.add("button");
-          OptionElement.textContent = option;
-          OptionElement.onclick = () => HandleUserSelection(option);
-          container.appendChild(OptionElement);
-        });
-        container.scrollTop = container.scrollHeight;
-      }
-
-      function HandleUserSelection(option) {
-        const optionElements = document.querySelectorAll(".button");
-        optionElements.forEach((optionEl) => optionEl.remove());
-        DisplayUserMessage(option);
-        GenerateBotResponse(option);
-      }
-
-      function DisplayUserMessage(choice) {
-        const UserChoice = document.createElement("div");
-        UserChoice.classList.add("message", "user");
-        UserChoice.textContent = choice;
-        container.appendChild(UserChoice);
-        container.scrollTop = container.scrollHeight;
-      }
-
-      function GenerateBotResponse(choice) {
-        let BotResponse = "";
-        const Delhi = ["National Museum", "Indian Air Force Museum", "National Handicrafts Museum"];
-        const Mumbai = ["Chhatrapati Shivaji Maharaj Vastu Sangrahalaya", "Dr. Bhau Daji Lad Museum", "Nehru Science Centre"];
-        const Kolkata = ["Science city","Victoria Memorial","Indian Museum"];
-        const Chennai = ["Chennai Rail Museum","Government Museum, Chennai","Tamil Nadu Police Museum"]; 
-        //add more museums further;
-
-        if (chatState === 0) {
-          if (choice === "Delhi") {
-            BotResponse = `You selected Delhi. Select the museum:`;
-            DisplayBotMessage(BotResponse);
-            displayOptions(Delhi);
-          } else if (choice === "Mumbai") {
-            BotResponse = `You selected Mumbai. Select the museum:`;
-            DisplayBotMessage(BotResponse);
-            displayOptions(Mumbai);
-          } else if (choice === "Chennai") {
-            BotResponse = `You selected Chennai. Select the museum:`;
-            DisplayBotMessage(BotResponse);
-            displayOptions(Chennai);
-          } else if (choice === "Kolkata") {
-            BotResponse = `You selected Kolkata. Select the museum:`;
-            DisplayBotMessage(BotResponse);
-            displayOptions(Kolkata);
-          } else if (Delhi.includes(choice) || Mumbai.includes(choice) || Kolkata.includes(choice) || Chennai.includes(choice)) {
-            chatState = 1;
-            BotResponse = `You selected ${choice}. Now, please select your nationality:`;
-            museumName=choice;
-            DisplayBotMessage(BotResponse);
-            setTimeout(() => {
-              selectNationality();
-            }, 1000);
-          }
-        } else if (chatState === 1) {
-          if (choice === "Indian" || choice === "Foreigner") {
-            chatState = 2;
-            BotResponse = `You selected ${choice}. Now, select the number of adults:`;
-            DisplayBotMessage(BotResponse);
-            setTimeout(() => {
-              selectAdults();
-            }, 1000);
-          }
-        } else if (chatState === 2) {
-          if (isNumberBetween1And8(choice)) {
-            numAdults = parseInt(choice);
-            chatState = 3;
-            BotResponse = `You selected ${choice} adults. Now, select the number of children:`;
-            DisplayBotMessage(BotResponse);
-            setTimeout(() => {
-              selectChildren();
-            }, 1000);
-          }
-        } else if (chatState === 3) {
-          if (isNumberBetween1And8(choice)) {
-            numChildren = parseInt(choice);
-            chatState = 4;
-            BotResponse = `You selected ${choice} children. Now, select the number of children below 5 years of age:`;
-            DisplayBotMessage(BotResponse);
-            setTimeout(() => {
-              selectChildrenBelow5();
-            }, 1000);
-          }
-        } else if (chatState === 4) {
-          if (isNumberBetween1And8(choice)) {
-            numChildrenBelow5 = parseInt(choice);
-            chatState = 5;
-            BotResponse = `You selected ${choice} children below 5 years of age. Thank you! Your selection is complete.`;
-            DisplayBotMessage(BotResponse);
-            setTimeout(() => {
-              Ticket();
-              alert("Your ticket has been generated!");
-            }, 1000);
-          }
-        } else if (chatState === 5) {
-          chatState = 0;
-        }
-      }
-
-      function selectNationality() {
-        DisplayBotMessage("Please select your nationality:");
-        displayOptions(["Indian", "Foreigner"]);
-      }
-
-      function selectAdults() {
-        DisplayBotMessage("Please select the number of adults:");
-        displayOptions(["1", "2", "3", "4", "5", "6", "7", "8"]);
-      }
-
-      function selectChildren() {
-        DisplayBotMessage("Please select the number of children:");
-        displayOptions(["0", "1", "2", "3", "4", "5", "6", "7", "8"]);
-      }
-
-      function selectChildrenBelow5() {
-        DisplayBotMessage("Please select the number of children below 5 years:");
-        displayOptions(["0", "1", "2", "3", "4", "5", "6", "7", "8"]);
-      }
-
-      function isNumberBetween1And8(choice) {
-        const validChoices = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
-        return validChoices.includes(choice);
-      }
-
-      function Ticket() {
-        DisplayBotMessage("Capture your ticket: ");
-
-        // Generate random values
-        const receiptNumber = Math.floor(Math.random() * 1000000);
-        const entryNumber = Math.floor(Math.random() * 100);
-        const date = new Date();
-        const randomDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
-        const randomTime = `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
-
-        // Calculate prices
-        const adultPrice = Math.floor(Math.random() * (100 - 31)) + 31;
-        const childPrice = Math.floor(Math.random() * (50 - 21)) + 21;
-        const totalAdultsPrice = numAdults * adultPrice;
-        const totalChildrenPrice = numChildren * childPrice;
-        const totalPrice = totalAdultsPrice + totalChildrenPrice; // Children below 5 are free
-
-        const tickelement = `<div class="div-css">
-            <div class="ticket-css">
-                <div class="ticket-header-css">Museum of India</div>
-                <div class="ticket-body-css">
-                    <p><strong>${museumName}</strong></p>
-                    <p><strong>Receipt number:</strong> ${receiptNumber}</p>
-                    <p><strong>Date:</strong> ${randomDate}</p>
-                    <p><strong>Time:</strong> ${randomTime}</p>
-                    <p><strong>Entry No:</strong> ${entryNumber}</p>
-                    <p><strong>Number of Adults:</strong> ${numAdults} (Price: ${adultPrice} INR each)</p>
-                    <p><strong>Number of Children:</strong> ${numChildren} (Price: ${childPrice} INR each)</p>
-                    <p><strong>Children below 5:</strong> ${numChildrenBelow5} (Free)</p>
-                    <p><strong>Total Amount:</strong> ${totalPrice} INR</p>
-                </div>
-                <div class="ticket-footer-css">Issued by the Government of India</div>
-            </div>
-            <button class="butt" id="downloadBtn-css">Download Ticket</button>
-        </div>`;
-
-        container.innerHTML = tickelement;
-        container.scrollTop = container.scrollHeight;
-
-        // Add functionality to the download button
-        const downloadBtn = document.getElementById("downloadBtn-css");
-        downloadBtn.onclick = () => {
-          const { jsPDF } = window.jspdf;
-          const doc = new jsPDF();
-          doc.text("Museum of India", 105, 10, { align: "center" });
-          doc.text(`Receipt number: ${receiptNumber}`, 10, 30);
-          doc.text(`Date: ${randomDate}`, 10, 40);
-          doc.text(`Time: ${randomTime}`, 10, 50);
-          doc.text(`Entry No: ${entryNumber}`, 10, 60);
-          doc.text(`Number of Adults: ${numAdults} (Price: ${adultPrice} INR each)`, 10, 70);
-          doc.text(`Number of Children: ${numChildren} (Price: ${childPrice} INR each)`, 10, 80);
-          doc.text(`Children below 5: ${numChildrenBelow5} (Free)`, 10, 90);
-          doc.text(`Total Amount: ${totalPrice} INR`, 10, 100);
-          doc.save("museum_ticket.pdf");
+        // --- State and Data ---
+        let chatState = 'initial'; // More descriptive state names
+        const userSelections = {
+            museum: "",
+            nationality: "",
+            adults: 0,
+            children: 0,
+            childrenBelow5: 0,
         };
-      }
+        const prices = {
+            adult: 50,
+            child: 25,
+        };
+        const museumData = {
+            "Delhi": ["National Museum", "Indian Air Force Museum", "National Handicrafts Museum"],
+            "Mumbai": ["Chhatrapati Shivaji Maharaj Vastu Sangrahalaya", "Dr. Bhau Daji Lad Museum", "Nehru Science Centre"],
+            "Kolkata": ["Science City", "Victoria Memorial", "Indian Museum"],
+            "Chennai": ["Chennai Rail Museum", "Government Museum, Chennai", "Tamil Nadu Police Museum"],
+        };
+        const numberOptions = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
 
-      StartChat();
+        // --- Core Functions ---
+        function startChat() {
+            chatState = 'initial';
+            messageArea.innerHTML = '';
+            addBotMessage("Welcome to the Museum Guide! Which city would you like to explore?");
+            displayOptions(Object.keys(museumData));
+        }
+
+        function handleSelection(option) {
+            addUserMessage(option);
+            clearOptions();
+            processResponse(option);
+        }
+
+        function processResponse(choice) {
+            switch (chatState) {
+                case 'initial': // City selected
+                    addBotMessage(`Great! Here are the museums in ${choice}:`);
+                    displayOptions(museumData[choice]);
+                    chatState = 'museum_selected';
+                    break;
+
+                case 'museum_selected': // Museum selected
+                    userSelections.museum = choice;
+                    addBotMessage(`You've selected ${choice}. Please select your nationality.`);
+                    displayOptions(["Indian", "Foreigner"]);
+                    chatState = 'nationality_selected';
+                    break;
+
+                case 'nationality_selected': // Nationality selected
+                    userSelections.nationality = choice;
+                    addBotMessage("How many adults (1-8) are in your group?");
+                    displayOptions(numberOptions.slice(1)); // Adults can't be 0
+                    chatState = 'adults_selected';
+                    break;
+
+                case 'adults_selected': // Adults selected
+                    userSelections.adults = parseInt(choice);
+                    addBotMessage(`Okay, ${choice} adults. How many children (0-8)?`);
+                    displayOptions(numberOptions);
+                    chatState = 'children_selected';
+                    break;
+
+                case 'children_selected': // Children selected
+                    userSelections.children = parseInt(choice);
+                    addBotMessage(`And how many children below 5 years of age (0-8)?`);
+                    displayOptions(numberOptions);
+                    chatState = 'children_below_5_selected';
+                    break;
+
+                case 'children_below_5_selected': // Final selection
+                    userSelections.childrenBelow5 = parseInt(choice);
+                    addBotMessage("Thank you! Your booking details are complete. Generating your ticket now...");
+                    generateTicket();
+                    chatState = 'complete';
+                    break;
+            }
+        }
+
+        // --- UI Helper Functions ---
+        function addMessage(content, type) {
+            const messageElement = document.createElement("div");
+            messageElement.classList.add("message", type);
+            messageElement.textContent = content;
+            messageArea.appendChild(messageElement);
+            messageArea.scrollTop = messageArea.scrollHeight;
+        }
+
+        function addBotMessage(message) {
+            addMessage(message, "bot");
+        }
+
+        function addUserMessage(message) {
+            addMessage(message, "user");
+        }
+
+        function displayOptions(options) {
+            clearOptions();
+            options.forEach(option => {
+                const button = document.createElement("button");
+                button.classList.add("option-button");
+                button.textContent = option;
+                button.onclick = () => handleSelection(option);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function clearOptions() {
+            optionsContainer.innerHTML = '';
+        }
+
+        // --- Ticket Generation ---
+        function generateTicket() {
+            const { museum, adults, children, childrenBelow5 } = userSelections;
+            const totalAdultsPrice = adults * prices.adult;
+            const totalChildrenPrice = children * prices.child;
+            const totalPrice = totalAdultsPrice + totalChildrenPrice;
+            const date = new Date();
+            const ticketDetails = {
+                receiptNumber: Math.floor(100000 + Math.random() * 900000),
+                date: date.toLocaleDateString("en-IN"),
+                time: date.toLocaleTimeString("en-IN", { hour: '2-digit', minute: '2-digit' }),
+                totalPrice,
+            };
+
+            const ticketHTML = `
+                <div class="ticket-wrapper">
+                    <div class="ticket" id="ticket-to-download">
+                        <div class="ticket-header">${museum}</div>
+                        <div class="ticket-body">
+                            <p><strong>Receipt No:</strong> ${ticketDetails.receiptNumber}</p>
+                            <p><strong>Date:</strong> ${ticketDetails.date} &nbsp; <strong>Time:</strong> ${ticketDetails.time}</p>
+                            <hr>
+                            <p><strong>Adults:</strong> ${adults} x ₹${prices.adult} = ₹${totalAdultsPrice}</p>
+                            <p><strong>Children:</strong> ${children} x ₹${prices.child} = ₹${totalChildrenPrice}</p>
+                            <p><strong>Children (Under 5):</strong> ${childrenBelow5} (Free)</p>
+                            <hr>
+                            <p><strong>Total Amount:</strong> ₹${totalPrice}</p>
+                        </div>
+                    </div>
+                    <button class="option-button" id="downloadBtn">Download Ticket (PDF)</button>
+                    <button class="option-button" id="startOverBtn">Start Over</button>
+                </div>`;
+            
+            messageArea.insertAdjacentHTML('beforeend', ticketHTML);
+            messageArea.scrollTop = messageArea.scrollHeight;
+
+            // Add event listeners for new buttons
+            document.getElementById("downloadBtn").onclick = () => downloadPDF(ticketDetails);
+            document.getElementById("startOverBtn").onclick = startChat;
+        }
+
+        function downloadPDF(ticketDetails) {
+            const { museum, adults, children, childrenBelow5 } = userSelections;
+            const { totalPrice, receiptNumber, date, time } = ticketDetails;
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont("Merriweather", "bold");
+            doc.setFontSize(20);
+            doc.text(museum, 105, 20, { align: "center" });
+
+            doc.setFont("Lato", "normal");
+            doc.setFontSize(12);
+            doc.text(`Receipt No: ${receiptNumber}`, 20, 40);
+            doc.text(`Date: ${date}`, 20, 50);
+            doc.text(`Time: ${time}`, 20, 60);
+
+            doc.line(20, 65, 190, 65); // separator
+
+            doc.text(`Adults: ${adults} x ${prices.adult} INR`, 20, 75);
+            doc.text(`Children: ${children} x ${prices.child} INR`, 20, 85);
+            doc.text(`Children (Under 5): ${childrenBelow5} (Free)`, 20, 95);
+
+            doc.line(20, 100, 190, 100); // separator
+
+            doc.setFont("Lato", "bold");
+            doc.text(`Total Amount: ${totalPrice} INR`, 20, 110);
+            
+            doc.save(`${museum.replace(/\s+/g, '_')}_ticket.pdf`);
+        }
+
+        // --- Initial Call ---
+        startChat();
     </script>
 </body>
 </html>
